@@ -5,10 +5,18 @@
 
 .thread-box{
     background-color: #fff;
+    border: 1px solid transparent;
+    border-color: #d3e0e9;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 
 .sidebar-item{
     background-color: #fff;
     padding: 7px;
     margin: 7px;
+    border: 1px solid transparent;
+    border-color: #d3e0e9;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
