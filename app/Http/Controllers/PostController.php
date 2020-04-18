@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use  App\Http\Requests\CreatePost;
 
 class PostController extends Controller
 {
@@ -13,7 +14,7 @@ class PostController extends Controller
         return view('posts.create')->with('categories',$categories);
     }
     
-    public function store(Request $request)
+    public function store(CreatePost $request)
     {
         $user_id = Auth::id();
         $post = new \App\Post();
