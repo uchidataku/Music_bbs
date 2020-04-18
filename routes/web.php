@@ -17,5 +17,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@toppage')->name('toppage');
 
-Route::resource('posts', 'PostController')->except(['update']);
+Route::resource('posts', 'PostController')->except(['update', 'destory']);
 Route::post('update/{id}', 'PostController@update')->name('posts.update');
+Route::post('destory/{id}', 'PostController@destroy')->name('posts.destroy');

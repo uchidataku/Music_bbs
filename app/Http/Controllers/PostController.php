@@ -15,7 +15,7 @@ class PostController extends Controller
         return view('posts.create')->with('categories',$categories);
     }
     
-    public function store(CreatePost $request)
+    public function store(Request $request)
     {
         $user_id = Auth::id();
         $post = new Post();
@@ -47,6 +47,13 @@ class PostController extends Controller
         $post->text = $request->text;
         $post->save();
         $post->categories()->attach(request()->categories);
+        return redirect('/');
+    }
+    
+    public function destroy($id)
+    {   
+        $post = Post::find($id);
+        $post->delete();
         return redirect('/');
     }
 }

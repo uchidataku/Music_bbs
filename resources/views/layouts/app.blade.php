@@ -50,7 +50,7 @@
                         @guest
                             <p>スレッド作成には、ログインが必要です。</p>
                         @else
-                            <div class="m-2"><button class=" btn btn-outline-primary">新規スレッド作成</button></div>
+                            <div class="m-2"><button class=" btn btn-outline-primary"><a href="{{ route('posts.create') }}">新規スレッド作成</a></button></div>
                         @endguest
                     </div>
                     <div class="sidebar-item d-flex flex-column text-center">
