@@ -17,4 +17,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@toppage')->name('toppage');
 
-Route::resource('posts', 'PostController', ['only' => ['create', 'store', 'show']]);
+Route::resource('posts', 'PostController')->except(['update']);
+Route::post('update/{id}', 'PostController@update')->name('posts.update');

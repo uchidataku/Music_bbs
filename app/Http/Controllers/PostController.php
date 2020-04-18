@@ -32,4 +32,21 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('posts.show', compact('post'));
     }
+    
+    public function edit($id)
+    {   
+        $post = Post::find($id);
+        $categories = \App\Category::all();
+        return view('posts.edit', compact('post', 'categories'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->text = $request->text;
+        $post->save();
+        $post->categories()->attach(request()->categories);
+        return redirect('/');
+    }
 }

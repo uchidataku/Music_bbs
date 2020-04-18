@@ -26,9 +26,10 @@
         </div>
         <div class="col-md-4">
         </div>
+        <div class="m-2 p-2 col-md-12">
+            <a href="{{ route('posts.edit', ['id' => $post->id]) }}">編集する</a>
+            <a href="#">削除する</a>
+        </div>
     </div>
-    <form action="" method="GET">
-        {{ csrf_field() }}
-    </form>
 </article>
 @endsection
