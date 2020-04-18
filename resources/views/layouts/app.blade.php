@@ -16,7 +16,7 @@
 <body>
     <header class="navbar-default">
         <div class="p-3 toplogo text-center">
-            <h1 class="m-3">おんがく.BBS</h1>
+            <h1 class="m-3"><a href="{{ route('toppage') }}">おんがく.BBS</a></h1>
         </div>
         <hr color="#888" width="100%" size="2">
         <nav class="p-3 d-flex justify-content-around">
