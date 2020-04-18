@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('toppage');
-});
+
 
 Auth::routes();
 
-Route::get('/toppage', 'HomeController@toppage')->name('toppage');
+Route::get('/', 'HomeController@toppage')->name('toppage');
 
 Route::resource('posts', 'PostController', ['only' => ['create', 'store', 'show']]);
