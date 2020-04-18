@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('toppage');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/toppage', 'HomeController@toppage')->name('toppage');
+Route::get('/', 'HomeController@toppage')->name('toppage');
 
-Route::resource('posts', 'PostController', ['only' => ['create', 'store', 'show']]);
+Route::resource('posts', 'PostController')->except(['update', 'destory']);
+Route::post('update/{id}', 'PostController@update')->name('posts.update');
+Route::post('destory/{id}', 'PostController@destroy')->name('posts.destroy');

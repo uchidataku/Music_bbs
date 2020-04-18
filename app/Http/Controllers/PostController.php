@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use  App\Http\Requests\CreatePost;
+use App\Post;
+use App\Http\Requests\CreatePost;
 
 class PostController extends Controller
 {
@@ -14,15 +15,45 @@ class PostController extends Controller
         return view('posts.create')->with('categories',$categories);
     }
     
-    public function store(CreatePost $request)
+    public function store(Request $request)
     {
         $user_id = Auth::id();
-        $post = new \App\Post();
+        $post = new Post();
         $post->user_id = $user_id;
         $post->title = $request->title;
         $post->text = $request->text;
         $post->save();
         $post->categories()->attach(request()->categories);
+        return redirect('/');
+    }
+    
+    public function show($id)
+    {   
+        $post = Post::find($id);
+        return view('posts.show', compact('post'));
+    }
+    
+    public function edit($id)
+    {   
+        $post = Post::find($id);
+        $categories = \App\Category::all();
+        return view('posts.edit', compact('post', 'categories'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->text = $request->text;
+        $post->save();
+        $post->categories()->attach(request()->categories);
+        return redirect('/');
+    }
+    
+    public function destroy($id)
+    {   
+        $post = Post::find($id);
+        $post->delete();
         return redirect('/');
     }
 }

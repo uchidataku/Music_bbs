@@ -50,14 +50,14 @@
                         @guest
                             <p>スレッド作成には、ログインが必要です。</p>
                         @else
-                            <div class="m-2"><button class=" btn btn-outline-primary">新規スレッド作成</button></div>
+                            <div class="m-2"><button class=" btn btn-outline-primary"><a href="{{ route('posts.create') }}">新規スレッド作成</a></button></div>
                         @endguest
                     </div>
                     <div class="sidebar-item d-flex flex-column text-center">
                         @guest
                             <div class="m-2"><h4>登録/ログイン</h4></div>
-                            <div class="m-2"><button class=" btn btn-outline-primary">新規登録</button></div>
-                            <div class="m-2"><button class="btn btn-outline-success">ログイン</button></div>
+                            <div class="m-2"><button class=" btn btn-outline-primary"><a href="{{ route('register') }}">新規登録</a></button></div>
+                            <div class="m-2"><button class="btn btn-outline-success"><a href="{{ route('login') }}">ログイン</a></button></div>
                         @else
                             <div class="m-2"><h4>ユーザー情報</h4></div>
                             <div class="m-2"><button class="btn btn-outline-primary">{{ Auth::user()->name }}</button></div>
