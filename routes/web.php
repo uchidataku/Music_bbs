@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/toppage', 'HomeController@toppage')->name('toppage');
 
 Route::resource('posts', 'PostController', ['only' => ['create', 'store', 'show']]);

@@ -21,13 +21,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home');
-    }
     
     public function toppage()
     {
-        return view('toppage');
+        $posts = \App\Post::all();
+        
+        return view('toppage')->with('posts',$posts);
     }
 }
