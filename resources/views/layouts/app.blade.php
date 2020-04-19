@@ -21,7 +21,7 @@
         <hr color="#888" width="100%" size="2">
         <nav class="p-3 d-flex justify-content-around">
             <a href="{{ route('category_index') }}">ジャンル一覧</a>
-            <p>キーワード検索</p>
+            <a href="{{ route('posts.index') }}">キーワード検索</a>
             @guest
                 <a href="{{ route('login') }}">ログイン</a>
                 <a href="{{ route('register') }}">新規登録</a>
@@ -41,8 +41,10 @@
                     <div class="sidebar-item d-flex flex-column text-center">
                         <div class="p-2"><h4>探す</h4></div>
                         <div>
-                          <div class="m-3">テキストスペース</div>
-                          <div class="m-3">キーワード検索</div>
+                            <form action="{{ route('posts.index') }}">
+                                <input type="text" name="keyword" placeholder="キーワードを入力..."/>
+                                <input type="submit" value="検索する"/>
+                            </form>
                         </div>
                     </div>
                     <div class="sidebar-item d-flex flex-column text-center">

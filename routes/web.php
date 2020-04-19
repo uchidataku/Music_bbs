@@ -17,12 +17,14 @@ Auth::routes();
 
 Route::get('/', 'HomeController@toppage')->name('toppage');
 
+
 Route::get('category_index', 'PostController@category_index')->name('category_index');
 Route::get('category/{id}', 'PostController@category')->name('category');
 
-Route::resource('posts', 'PostController')->except(['update', 'destory']);
-Route::post('update/{id}', 'PostController@update')->name('posts.update');
-Route::post('destory/{id}', 'PostController@destroy')->name('posts.destroy');
+Route::get('posts/index', 'PostController@index')->name('posts.index');
+Route::resource('posts', 'PostController')->except(['index', 'update', 'destory']);
+Route::post('posts/update/{id}', 'PostController@update')->name('posts.update');
+Route::post('posts/destory/{id}', 'PostController@destroy')->name('posts.destroy');
 
 Route::resource('responses', 'ResponseController')->only(['create', 'store']);
 Route::post('responses/destory/{id}', 'ResponseController@destroy')->name('responses.destroy');

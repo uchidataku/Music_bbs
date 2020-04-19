@@ -24,6 +24,22 @@ class PostController extends Controller
         return view('posts.category', compact('category', 'category_posts'));
     }
     
+    public function index(Request $request)
+    {   
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+        
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('text', 'LIKE', "%{$keyword}%")
+                ->get();
+        }
+        
+        $data = $query->paginate(10);
+        
+        return view('posts.index', compact('keyword', 'data'));
+    }
+    
     public function create()
     {   
         $categories = Category::all();
