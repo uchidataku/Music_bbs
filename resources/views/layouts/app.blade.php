@@ -26,7 +26,7 @@
                 <a href="{{ route('login') }}">ログイン</a>
                 <a href="{{ route('register') }}">新規登録</a>
             @else
-                <p>{{ Auth::user()->name }}</p>
+                <a href="{{ action('HomeController@usershow', Auth::id()) }}">{{ Auth::user()->name }}</a>
             @endguest
         </nav>
     </header>
@@ -62,7 +62,7 @@
                             <div class="m-2"><button class="btn btn-outline-success"><a href="{{ route('login') }}">ログイン</a></button></div>
                         @else
                             <div class="m-2"><h4>ユーザー情報</h4></div>
-                            <div class="m-2"><button class="btn btn-outline-primary">{{ Auth::user()->name }}</button></div>
+                            <div class="m-2"><button class="btn btn-outline-primary"><a href="{{ action('HomeController@usershow', Auth::id()) }}">{{ Auth::user()->name }}</a></button></div>
                             <div class="m-2">
                                 <button href="{{ route('logout') }}"
                                 class="btn btn-outline-danger"

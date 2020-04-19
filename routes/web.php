@@ -16,7 +16,8 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@toppage')->name('toppage');
-
+Route::get('user/{id}', 'HomeController@usershow')->name('usershow');
+Route::post('user/destory/{id}', 'HomeController@userdestroy')->name('userdestroy');
 
 Route::get('category_index', 'PostController@category_index')->name('category_index');
 Route::get('category/{id}', 'PostController@category')->name('category');

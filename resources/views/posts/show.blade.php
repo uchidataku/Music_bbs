@@ -52,7 +52,7 @@
                         <form method="POST" action="{{ route('responses.destroy', ['id' => $response->id]) }}" id="delete_{{ $response->id }}">
                             {{ csrf_field() }}
                             <a href="#" data-id="{{ $response->id }}" onclick="deleteResponse(this);">削除する</a>
-                        </form>    
+                        </form>
                     </div>
                 </div>
             @endif
@@ -75,7 +75,6 @@
         </div>
     </form>
 </article>
-
 <script>
     function deletePost(e) {
         'use strict';
