@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Response;
 use App\Http\Requests\CreatePost;
 
 class PostController extends Controller
@@ -30,7 +31,8 @@ class PostController extends Controller
     public function show($id)
     {   
         $post = Post::find($id);
-        return view('posts.show', compact('post'));
+        $responses = Response::where('post_id', $post->id)->get();
+        return view('posts.show', compact('post', 'responses'));
     }
     
     public function edit($id)
