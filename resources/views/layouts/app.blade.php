@@ -20,7 +20,7 @@
         </div>
         <hr color="#888" width="100%" size="2">
         <nav class="p-3 d-flex justify-content-around">
-            <p>ジャンル一覧</p>
+            <a href="{{ route('category_index') }}">ジャンル一覧</a>
             <p>キーワード検索</p>
             @guest
                 <a href="{{ route('login') }}">ログイン</a>
