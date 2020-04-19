@@ -19,4 +19,9 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Category');
     }
+    
+    public function responses()
+    {
+        return $this->hasMany('App\Response');
+    }
 }
