@@ -46,6 +46,16 @@
                 <p class="m-2 p-2">{{ $response->user->name }}</p>
                 <p class="m-2 p-2">{{ $response->created_at }}</p>
             </div>
+            @if(Auth::id() === $response->user_id)
+                <div class="m-2 p-2 col-md-12 d-flex flex-row">
+                    <div class="p-1">
+                        <form method="POST" action="{{ route('responses.destroy', ['id' => $response->id]) }}" id="delete_{{ $response->id }}">
+                            {{ csrf_field() }}
+                            <a href="#" data-id="{{ $response->id }}" onclick="deleteResponse(this);">削除する</a>
+                        </form>    
+                    </div>
+                </div>
+            @endif
         </div>
     @endforeach
     <form action="{{ route('responses.store') }}" method="POST">
@@ -68,6 +78,13 @@
 
 <script>
     function deletePost(e) {
+        'use strict';
+        if (confirm('本当に削除していいですか？')) {
+            document.getElementById('delete_' + e.dataset.id).submit();
+        }
+    }
+    
+    function deleteResponse(e) {
         'use strict';
         if (confirm('本当に削除していいですか？')) {
             document.getElementById('delete_' + e.dataset.id).submit();
