@@ -9,7 +9,7 @@
                 <div><h5 class="m-3 p-3 thread-text">{{ $post->text }}</h5></div>
                 <div class="d-flex flex-row justify-content-start">
                     @foreach($post->categories as $category)
-                        <p class="badge badge-primary m-2 p-1 genre">{{ $category->name }}</p>
+                        <p class="badge badge-info m-2 p-1 genre">{{ $category->name }}</p>
                     @endforeach
                 </div>
                 <p class="m-2 p-2">{{ $post->user->name }}</p>

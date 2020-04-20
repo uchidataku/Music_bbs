@@ -41,7 +41,7 @@
     </div>
     @foreach($responses as $response)
         <div class="row m-3 no-gutters thread-box">
-          	<div class="p-3 col-md-8 d-flex flex-column">
+          	<div class="p-3 col-md-12 d-flex flex-column">
                 <div><h5 class="m-3 p-3 thread-text">{{ $response->text }}</h5></div>
                 <p class="m-2 p-2">{{ $response->user->name }}</p>
                 <p class="m-2 p-2">{{ $response->created_at }}</p>
@@ -67,7 +67,7 @@
             <div class="row d-flex flex-column align-items-center">
                 <div class="m-3 d-flex flex-column">
                     <div class="m-2">本文</div>
-                    <input type="text" name="text"/>
+                    <textarea type="text" name="text" rows=10 cols=80/></textarea>
                 </div>
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
                 <div class="m-4"><input type="submit" value="コメントする"/></div>

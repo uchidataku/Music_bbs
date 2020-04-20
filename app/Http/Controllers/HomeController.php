@@ -26,8 +26,8 @@ class HomeController extends Controller
     
     public function toppage()
     {
-        $posts = Post::all();
-        return view('toppage')->with('posts',$posts);
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('toppage', compact('posts'));
     }
     
     public function usershow($id)

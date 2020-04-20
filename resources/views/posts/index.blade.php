@@ -6,7 +6,7 @@
         <div class="panel-heading text-center">キーワード検索</div>
         <div class="m-3 p-3 d-flex flex-column align-items-center">
             <form>
-                <input type="text" name="keyword" value="{{ $keyword }}" placeholder="キーワードを入力..."/>
+                <input type="text" name="keyword" value="{{ $keyword }}" placeholder="キーワードを入力..." style="width:400px;"/>
                 <input type="submit" value="検索する"/>
             </form>
         </div>
