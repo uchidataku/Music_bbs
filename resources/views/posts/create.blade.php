@@ -20,11 +20,11 @@
             <div class="row d-flex flex-column align-items-center">
                 <div class="m-3 d-flex flex-column">
                     <div class="m-2">スレッドタイトル</div>
-                    <div class=""><input type="text" name="title"/></div>
+                    <div class=""><input type="text" name="title" style="width:400px;"/></div>
                 </div>
                 <div class="m-3 d-flex flex-column">
                     <div class="m-2">本文</div>
-                    <input type="text" name="text"/>
+                    <textarea type="text" name="text" rows=10 cols=80/></textarea>
                 </div>
                 <div class="m-3 d-flex flex-column">
                     <div class="m-2 text-center">ジャンル選択</div>

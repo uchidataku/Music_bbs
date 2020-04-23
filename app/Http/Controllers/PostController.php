@@ -6,13 +6,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Response;
+use App\Category;
 use App\Http\Requests\CreatePost;
 
 class PostController extends Controller
 {
+    public function category_index()
+    {   
+        $categories = Category::all();
+        return view('posts.category_index', compact('categories'));
+    }
+    
+    public function category($id)
+    {   
+        $category = Category::find($id);
+        $category_posts = $category->posts;
+        return view('posts.category', compact('category', 'category_posts'));
+    }
+    
+    public function index(Request $request)
+    {   
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+        
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('text', 'LIKE', "%{$keyword}%")
+                ->get();
+        }
+        
+        $data = $query->paginate(10);
+        
+        return view('posts.index', compact('keyword', 'data'));
+    }
+    
     public function create()
     {   
-        $categories = \App\Category::all();
+        $categories = Category::all();
         return view('posts.create')->with('categories',$categories);
     }
     

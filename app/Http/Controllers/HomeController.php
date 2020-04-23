@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,20 @@ class HomeController extends Controller
     
     public function toppage()
     {
-        $posts = \App\Post::all();
-        
-        return view('toppage')->with('posts',$posts);
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('toppage', compact('posts'));
+    }
+    
+    public function usershow($id)
+    {
+        $user = User::find($id);
+        return view('usershow', compact('user'));
+    }
+    
+    public function userdestroy($id)
+    {   
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/');
     }
 }
